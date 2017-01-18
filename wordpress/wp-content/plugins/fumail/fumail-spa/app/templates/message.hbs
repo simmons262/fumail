@@ -1,0 +1,32 @@
+<div class="previous">
+	{{#link-to 'send' class="button"}} Previous Step {{/link-to}}
+</div>
+<div id="page-1" class="page" data-page="1">
+	<div class="column-2">
+		{{#each model.options.categories as |cat|}}
+			<p>{{cat.name}}</p>
+		{{/each}}
+		{{#each model.options.categories as |cat|}}
+		<select>
+			{{#each cat.options as |msg|}}
+			<option value="{{msg.value}}">{{msg.name}}</option>
+			{{/each}}
+		</select>
+		{{/each}}
+	</div>
+	<div class="column-2">
+		<div>
+			<label>Custom Message:</label>
+			{{input type="text" value=customMsg placeholder="Your message here..."}}
+		</div>
+		<div class="text">
+			<h3>{{customMsg}}</h3>
+		</div>
+	</div>
+	<div class="envelope-container">
+		{{envelope-display step='msg'}}
+	</div>
+</div>
+<div class="next">
+	{{#link-to 'address' class="button"}} Address {{/link-to}}
+</div>

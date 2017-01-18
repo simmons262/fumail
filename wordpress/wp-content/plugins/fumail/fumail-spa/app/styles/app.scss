@@ -1,0 +1,260 @@
+@import "settings";
+@import "../../bower_components/foundation-sites/scss/foundation";
+@include foundation-everything;
+
+body{
+  background-color:#40DBE5;
+  p{
+    text-align:center;
+    color:#555;
+    text-transform:uppercase;
+    font-weight:bold;
+  }
+}
+.envelope {
+  position: relative;
+  margin: 5% 0;
+  width: 360px;
+  height: 258px;
+  background: #c94548;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 1px #c94548 inset;
+
+  &:before,&:after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-width: 124px 180px;
+  }
+  &:before{
+  border-bottom-color: #c94548;
+  top: 0%;
+  left: 0px;
+  }
+  &:after{
+  border-right-color: #ed4c50;
+  border-left-color: #fa565a;
+  border-bottom-color: #fa565a;
+  top: 10px;
+  border-radius: 0 0 5px 5px;
+  transform: rotate(360deg);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  }
+  &:hover > .paper {
+    top:-110px;
+  }
+
+  &:hover > &:before{
+	transform: translateY(100%);
+  }
+}
+.envelope h2 {
+	padding: 20px 90px;
+}
+.paper{
+  position:absolute;
+  width:285px;
+  height:255px;
+  margin: 0 auto;
+  background:#fff;
+  top:0px;
+  border-radius:5px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  left:38px;
+  transition: top 0.5s ease;
+
+  &:before,&:after{
+  content: '';
+  position: absolute;
+  left: 12px;
+  background: #e3f1fc;
+  height: 4px;
+  border-radius: 5px;
+  }
+
+  &:before{
+  top: 14px;
+  width: 31px;
+  }
+  &:after{
+    right: 12px;
+    top: 28px;
+    box-shadow:
+    0 8px 0 #e3f1fc,
+    0 16px 0 #e3f1fc,
+    0 24px 0 #e3f1fc,
+    0 40px 0 #e3f1fc;
+  }
+}
+
+/*
+ Big Envelope
+
+// COLORS
+$body-bg: hsl(0, 0%, 89%);
+$envelope-bg: hsl(0, 0%, 95%);
+$envelope-triangle-top-color: hsl(11, 85%, 64%);
+$envelope-triangle-bottom-color: hsl(11, 85%, 62%);
+$envelope-triangle-left-right-color: hsl(11, 85%, 60%);
+$envelope-shadow: 0 20px 100px rgba(0, 0, 0, 0.25);
+$paper-color: #fff;
+
+
+// SIZES
+$envelope-height: 310px;
+$envelope-width: 500px;
+$envelope-border-width: 9px;
+$envelope-triangle-top-width: 0.705 * $envelope-width;
+$envelope-triangle-left-width: 0.705 * $envelope-height;
+$envelope-triangle-top-border-radius: 30px;
+
+// transitions
+$triangle-top-time: 0.4s;
+
+// z-index
+$envelope-bg-z: 10;
+$paper-z: 20;
+$envelope-z: 30;
+
+
+html {
+  box-sizing: border-box;
+}
+
+* ,*::before ,*::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+a ,button {
+  background: none;
+  border: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &:checked ,&:visited ,&:active ,&:focus {
+    outline: 0;
+  }
+}
+
+html ,body {
+  height: 100%;
+}
+
+body {
+  background-color: $body-bg;
+  background: linear-gradient(30deg, hsl(210, 58%, 85%), hsl(203, 53%, 79%));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.envelope-1 {
+  width: $envelope-width;
+  height: $envelope-height;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  transition: transform linear $triangle-top-time;
+
+  &:hover {
+    transform: translateY(25%);
+
+    .triangle_top {
+      top: 1px;
+      transform: rotate3d(1, 0, 0, 180deg);
+      z-index: $envelope-z +1;
+    }
+
+    #top {
+      fill: $envelope-bg;
+      filter: url(#topsh);
+    }
+  }
+}
+
+#envelope {
+  z-index: $envelope-z;
+}
+
+.triangle_top {
+  left:0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: $envelope-z;
+  transform-origin: top;
+  transition: transform linear $triangle-top-time, top linear $triangle-top-time;
+}
+
+.clicked {
+  &.env {
+    opacity: 0;
+    transform: translateY(250%);
+    transition: 0.3s opacity linear 3s, transform linear $triangle-top-time;
+  }
+
+  &.triangle_top {
+    z-index: $paper-z - 1;
+    transform: translate(0%, 250%) rotate3d(1, 0, 0, 180deg);
+  }
+
+  #top {
+    fill: $envelope-bg;
+    filter: url(#topsh);
+  }
+}
+
+.envelope-bg {
+  left:0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $envelope-bg;
+  transition: transform linear $triangle-top-time;
+}
+
+// envelope colors
+#left-right {
+  fill: $envelope-triangle-left-right-color;
+}
+
+#bottom {
+  fill: $envelope-triangle-bottom-color;
+}
+
+#top {
+  fill: $envelope-triangle-top-color;
+  transition: 0s fill linear $triangle-top-time / 2, 0s filter linear $triangle-top-time / 2;
+}
+
+.paper-1 {
+  width: 0.8 * $envelope-width;
+  height: 0.96 * $envelope-height;
+  background-color: $paper-color;
+  position: absolute;
+  box-shadow: 0 0 5px hsl(0, 0%, 82%);
+  padding: 25px;
+  left: 10%;
+  overflow: hidden;
+  z-index: $paper-z;
+
+
+  p {
+    font-size: 16px;
+    line-height: 1.1;
+    font-family: serif;
+    text-align: justify;
+  }
+}
+*/

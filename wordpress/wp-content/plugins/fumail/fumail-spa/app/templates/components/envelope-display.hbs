@@ -1,0 +1,41 @@
+{{#if large}}
+<div class="envelope-1">
+  <svg class="env" id="envelope" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 230" preserveAspectRatio="none" height="100%" width="100%">
+    <defs>
+      <filter id="left-right-shadow" x="0" y="0" width="200%" height="200%">
+        <feOffset result="offOut" in="SourceGraphic" dx="0" dy="0"></feOffset>
+        <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+        <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="2"></feGaussianBlur>
+        <feBlend in="SourceGraphic" in2="blurOut" mode="normal"></feBlend>
+      </filter>
+      <filter id="topsh" x="0" y="0" width="200%" height="200%">
+        <feOffset result="offOut" in="SourceGraphic" dx="0" dy="0"></feOffset>
+        <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"></feColorMatrix>
+        <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="6"></feGaussianBlur>
+        <feBlend in="SourceGraphic" in2="blurOut" mode="normal"></feBlend>
+      </filter>
+    </defs>
+    <g id="env">
+      <polygon id="left-right" filter="url(#left-right-shadow)" points="0,230 0,10 170,115 340,10 340,230 "></polygon>
+      <path id="bottom" filter="url(#left-right-shadow)" d="M0,230h340v-10L178,102c-4.4-3.1-11.6-3.1-16,0L0,220L0,230"></path>
+    </g>
+  </svg>
+  <div class="envelope-bg env"></div>
+  <div class="triangle_top env">
+    <svg id="envelope_top" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 340 230" enable-background="new 0 0 340 230" xml:space="preserve" preserveAspectRatio="none" height="100%" width="100%">
+      <path id="top" filter="url(#left-right-shadow)" d="M340,0H0v10l162,118c4.4,3.1,11.6,3.1,16,0L340,10V0"></path>
+    </svg>
+  </div>
+  <div class="paper-1">
+    <p>Hello, my name is Artur!  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ex maxime animi repellendus rem accusantium odio sunt et vitae reiciendis eos molestias itaque quod veritatis assumenda fuga maiores pariatur, obcaecati voluptatibus asperiores quaerat quos! A deserunt aperiam quod fugiat! Fugiat blanditiis modi et quos voluptas dolore nisi amet praesentium ducimus, atque. Aperiam, deserunt, temporibus. Necessitatibus veritatis quaerat harum dignissimos commodi animi rerum, vel qui neque aut minus, libero sunt. Nostrum, neque, rerum! Aut, eveniet, vero culpa ab non impedit sed.</p>
+  </div>
+</div>
+{{else}}
+<div class="envelope">
+	{{#if step='message'}}
+	<div class="paper"></div>
+	{{else}}
+	<h2>FU Mail</h2>
+	{{/if}}
+</div>
+{{/if}}

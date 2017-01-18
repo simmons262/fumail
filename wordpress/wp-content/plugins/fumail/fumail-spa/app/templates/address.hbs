@@ -1,0 +1,14 @@
+<div class="previous">
+	{{#link-to 'message' class="button"}} Previous Step {{/link-to}}
+</div>
+<div id="page-2" class="page" data-page="2">
+	<form>
+		{{input value=firstName}}
+	</form>
+	<div class="envelope-container">
+		{{envelope-display step='msg'}}
+	</div>
+</div>
+<div class="next">
+	{{#link-to 'address' class="button"}} Checkout {{/link-to}}
+</div>
